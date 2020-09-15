@@ -9,30 +9,34 @@
 // # Last Update: 09/15/2020                                                            #
 //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 use std::collections::HashSet;
-fn main() {
-    let mut A = HashSet::new();
-    let mut B = HashSet::new();
-    let mut C = HashSet::new();
 
-    A.insert(1);
-    A.insert(2);
-    A.insert(3);
-    A.insert(4);
-    A.insert(5);
+//definimos los tres sets
 
-    B.insert(3);
-    B.insert(4);
-    B.insert(5);
-    B.insert(6);
-    B.insert(7);
+fn creacion()
+{
+   let mut A = HashSet::new();
+   let mut B = HashSet::new();
+   let mut C = HashSet::new();
 
-    C.insert(1);
-    C.clear();
+   A.insert(1);
+   A.insert(2);
+   A.insert(3);
+   A.insert(4);
+   A.insert(5);
+
+   B.insert(3);
+   B.insert(4);
+   B.insert(5);
+   B.insert(6);
+   B.insert(7);
+
+   C.insert(1);
+   C.clear();
 
    println!("\n------Conjunto A:------");
    for num in &A 
    {
-    print!("{}", num);
+   print!("{}", num);
    }
 
    println!("\n------Conjunto B:------");
@@ -46,7 +50,27 @@ fn main() {
    {
     print!("{}", num);
    }
-   //pertenencia
+}
+
+//Remueve un elemento del conjunto
+
+fn quitar()
+{
+   let mut A: HashSet<_> = [1, 2, 3, 4, 5].iter().cloned().collect();
+   let mut B: HashSet<_> = [3, 4, 5, 6, 7].iter().cloned().collect();
+   println!("\nEliminar datos del conjunto A: ");
+   A.remove(&2);
+   println!("\n------Conjunto A actualizado:------");
+   for num in &A 
+   {
+    print!("{}", num);
+   }
+}
+
+fn pertenencia()
+{
+   let mut A: HashSet<_> = [1, 2, 3, 4, 5].iter().cloned().collect();
+   let mut B: HashSet<_> = [3, 4, 5, 6, 7].iter().cloned().collect();
    println!("\nPertenencia");
    println!("\n1 in A:");
    print!("{}", A.contains(&1));
@@ -56,72 +80,176 @@ fn main() {
    print!("{}", A.contains(&10));
    println!("\n10 not in A:");
    print!("{}", A.contains(&10));
-   //println!("\n1 not in A ", A.contains(&1));
-   //println!("\n10 in A ", A.contains(&10));
-   //println!("\n10 not in A ", A.contains(&1));
-   
-
-   //Eliminar datos del Conjunto
-
-    println!("\nEliminar datos del conjunto A: ");
-    A.remove(&2);
-
+}
+//Remueve todos los elementos del set
+fn clearSet()
+{
+   let mut A: HashSet<_> = [1, 2, 3, 4, 5].iter().cloned().collect();
+   A.clear();
    println!("\n------Conjunto A actualizado:------");
    for num in &A 
    {
     print!("{}", num);
    }
-
-   //Limpiar todo el conjunto
-   B.clear();
+}
+//Copia un conjunto
+fn copiar()
+{
+  let mut A: HashSet<_> = [1, 2, 3, 4, 5].iter().collect();
+  let mut B: HashSet<_> = A.clone();
+  println!("Set A = {:?} compare set B = {:?}", &A, &B);
+}
+//Agrega un elemento
+fn agregar()
+{
+   let mut B = HashSet::new();
+   B.insert(1);
+   B.insert(2);
+   B.insert(3);
+   B.insert(4);
+   B.insert(5);
+   B.insert(987);
    println!("\n------Conjunto B actualizado:------");
    for num in &B 
    {
     print!("{}", num);
    }
+}
 
-   //Copiar un conjunto 
+//union
+fn union()
+{
+ let mut A: HashSet<_> = [1, 2, 3, 4, 5].iter().cloned().collect();
+ let mut B: HashSet<_> = [1, 2, 3, 4, 5, 987].iter().cloned().collect();
+ for x in A.union(&B) 
+ {
+  print!("{ }", x);
+ }
+}
 
+//Interseccion
+fn interseccion()
+{
+ let mut A: HashSet<_> = [1, 2, 3, 4, 5].iter().cloned().collect();
+ let mut B: HashSet<_> = [1, 2, 3, 4, 5, 987].iter().cloned().collect();
+ for x in A.intersection(&B) 
+ {
+  print!("{}", x);
+ }
+}
+//diferencia
+fn diferencia()
+{
+ let mut A: HashSet<_> = [1, 2, 3, 4, 5].iter().cloned().collect();
+ let mut B: HashSet<_> = [1, 2, 3, 4, 5, 987].iter().cloned().collect();
+ for x in A.difference(&B) 
+ {
+  print!("{}", x);
+ }
+}
 
-   //Insertar un nuevo elemento
-   B.insert(987);
-    println!("\n------Conjunto A actualizado:------");
-   for num in &A 
-   {
-    print!("{}", num);
-   }
-//------Operacion de Conjuntos--------
-    println!("\n------Operacion de Conjuntos:------");
-    println!("Union\n");
-    let q: HashSet<_> = [1, 2, 3].iter().cloned().collect();
-    let w: HashSet<_> = [4, 2, 3, 4,9,7,5].iter().cloned().collect();
+//Diferencia simetrica
+fn simetrica()
+{
+ let mut A: HashSet<_> = [1, 2, 3, 4, 5].iter().cloned().collect();
+ let mut B: HashSet<_> = [1, 2, 3, 4, 5, 987].iter().cloned().collect();
+ let mut C = HashSet::new();
+ C.insert(1);
+ C.clear();
 
-    for x in q.union(&w) 
-    {
-        print!("{ }", x);
-    }
-    println!("\n Interseccion\n");
-    for x in q.intersection(&w) 
-    {
-    print!("{}", x);
-    }
-    println!("\n Diferencia\n");
+ for x in A.symmetric_difference(&B) 
+ {
+  print!("{}", x);
+ }
+ for x in B.symmetric_difference(&A) 
+ {
+  print!("{}", x);
+ }
+ for x in A.symmetric_difference(&C) 
+ {
+  print!("{}", x);
+ }
+ for x in B.symmetric_difference(&C) 
+ {
+  print!("{}", x);
+ }
+}
 
-    for x in q.difference(&w) {
-        print!("{}", x);
-    }
-    println!("\n Diferencia simetrica\n");
-    for x in q.symmetric_difference(&w) 
-    {
-    print!("{}", x);
-    }   
+//Subconjunto
+fn subconjunto()
+{
+ let mut A: HashSet<_> = [1, 2, 3, 4, 5].iter().cloned().collect();
+ let mut B: HashSet<_> = [1, 2, 3, 4, 5, 987].iter().cloned().collect();
+ print!("El subconjunto= ");
+ println!("{}",A.is_subset(&B));
+ print!("El subconjunto= ");
+ println!("{}",B.is_subset(&A));
+}
 
-    println!("\nSubconjunto\n");
-    print!("q subjconjunto de w:");
-    println!("{}",q.is_subset(&w));
-
-    println!("\nSuperconjunto\n");
-    print!("q superconjunto de w:");
-    println!("{}",q.is_superset(&w));
+//superconjunto
+fn superconjunto()
+{
+ let mut A: HashSet<_> = [1, 2, 3, 4, 5].iter().cloned().collect();
+ let mut B: HashSet<_> = [1, 2, 3, 4, 5, 987].iter().cloned().collect();
+ print!("El superconjunto= ");
+ println!("{}",B.is_superset(&A));
+ print!("El superconjunto= ");
+ println!("{}",A.is_superset(&B));
    
 }
+
+fn main() {
+ let mut A = HashSet::new();
+ let mut B = HashSet::new();
+ let mut C = HashSet::new();
+ A.insert(1);
+ A.insert(2);
+ A.insert(3);
+ A.insert(4);
+ A.insert(5);
+ B.insert(3);
+ B.insert(4);
+ B.insert(5);
+ B.insert(6);
+ B.insert(7);
+ C.insert(1);
+ C.clear();
+ println!("\n------Conjunto A:------");
+ for num in &A 
+  {
+   print!("{}", num);
+  }
+
+ println!("\n------Conjunto B:------");
+ for num in &B 
+ {
+  print!("{}", num);
+ }
+ println!("\n------Conjunto C:------");
+ for num in &C 
+  {
+   print!("{}", num);
+  }
+ //pertenencia
+ println!("\nPertenencia");
+ println!("\n1 in A:");
+ print!("{}", A.contains(&1));
+ println!("\n1 not in A:");
+ print!("{}", A.contains(&1));
+ println!("\n10 in A:");
+ print!("{}", A.contains(&10));
+ println!("\n10 not in A:");
+ print!("{}", A.contains(&10));
+ 
+ quitar();
+ clearSet();
+ copiar();
+ agregar();
+ union();
+ interseccion();
+ diferencia();
+ simetrica();
+ subconjunto();
+ superconjunto();
+}
+
