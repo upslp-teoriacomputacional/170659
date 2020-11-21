@@ -1,3 +1,13 @@
+#* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  
+# Nombre: Daniela Guadalupe Ramirez Castillo                                         #
+# Matricula: 170659                                                                  #
+# Carrera: ITI                                                                       #
+#                                                                                    #       
+# Descripcion: Codigo para obtener la fecha en el bash de linux                      #
+#                                                                                    #
+# Written: 11/21/2020                                                                #
+# Last Update: 11/21/2020                                                            #
+#* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 #
 BEGIN{
 units = "one two three four five six seven eight nine"
